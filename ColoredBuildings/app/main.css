@@ -1,0 +1,28 @@
+html,
+body,
+#viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+  button {
+    position: absolute;
+    bottom: 17px;
+    left: 50%;
+    margin-left: -100px;
+    background: white;
+    padding: 7px;
+    border: 1px solid #005e95;
+    font-size: 0.9em;
+    margin: 5px;
+    color: #005e95;
+    font-family: "Avenir Next W01", "Arial", sans-serif;
+  }
+
+  button:hover {
+    background: #005e95;
+    color: white;
+    cursor: pointer;
+  }
