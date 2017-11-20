@@ -1,16 +1,21 @@
 {
-  "name": "ColoredBuildings",
+  "name": "tsdemocityviz",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "dependencies": {
-    "@types/arcgis-js-api": "^4.5.1"
-  },
-  "devDependencies": {},
+  "description": "A demo for a city visualization using TypeScript and ESRI JSAPI",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "tsc -w"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "esrijs",
+    "3D",
+    "demo"
+  ],
+  "author": "Raluca Nicola",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dojo": "^1.9.40",
+    "@types/arcgis-js-api": "^4.5.1",
+    "typescript": "^2.6.1"
+  }
 }

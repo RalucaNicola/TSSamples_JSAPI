@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Colored buildings</title>
     <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/css/main.css">
-    <link rel="stylesheet" href="app/main.css">
+    <link rel="stylesheet" href="src/css/main.css">
     <script>
         var locationPath = location.pathname.replace(/\/[^\/]+$/, "");
         window.dojoConfig = {
             packages: [{
-                name: "app",
-                location: locationPath + "/app"
+                name: "src",
+                location: locationPath + "/src/js"
             }]
         };
     </script>
@@ -22,9 +22,14 @@
 
 <body>
     <div id="viewDiv"></div>
-    <button id="changeColor">Change color scheme</button>
+    <ul id="cityList">
+        <li>Buildings in New York</li>
+        <li>Buildings in Lyon</li>
+        <li>Buildings in Helsinki</li>
+    </ul>
+    <div class="buttonContainer"><button id="changeColor">Change color scheme</button></div>
     <script>
-        require(["app/main"]);
+        require(["src/main"]);
     </script>
 </body>
 

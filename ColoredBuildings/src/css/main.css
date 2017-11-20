@@ -1,0 +1,50 @@
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.buttonContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
+button {
+  margin-bottom: 20px;
+  background: white;
+  padding: 7px;
+  border: 1px solid #005e95;
+  font-size: 0.9em;
+  color: #005e95;
+  font-family: "Avenir Next W01", "Arial", sans-serif;
+}
+
+button:hover {
+  background: #005e95;
+  color: white;
+  cursor: pointer;
+}
+
+ul {
+  position: absolute;
+  top: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  width: 100%;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+ul > li {
+  border-bottom: dashed white 1px;
+  cursor: pointer;
+}
