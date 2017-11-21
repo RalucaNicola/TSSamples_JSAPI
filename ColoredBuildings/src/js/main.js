@@ -1,4 +1,4 @@
-define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/layers/SceneLayer", "./rendererGenerator", "dojo/promise/all"], function (require, exports, WebScene, SceneView, SceneLayer, rendererGenerator, all) {
+define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/layers/SceneLayer", "./rendererGenerator", "esri/widgets/BasemapGallery", "dojo/promise/all"], function (require, exports, WebScene, SceneView, SceneLayer, rendererGenerator, BasemapGallery, all) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let webscene = new WebScene({
@@ -11,6 +11,11 @@ define(["require", "exports", "esri/WebScene", "esri/views/SceneView", "esri/lay
         container: "viewDiv"
     });
     view.ui.empty("top-left");
+    let basemapGallery = new BasemapGallery({
+        view: view
+    });
+    // Add widget to the bottom left corner of the view
+    view.ui.add(basemapGallery, { position: "bottom-right" });
     let layerMetadataArray = [{
             name: 'Helsinki',
             portalItemId: '5ecba5273b2d41ff9f6f1eb33f238d18',

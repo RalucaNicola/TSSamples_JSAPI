@@ -2,6 +2,7 @@ import WebScene = require("esri/WebScene");
 import SceneView = require("esri/views/SceneView");
 import SceneLayer = require("esri/layers/SceneLayer");
 import rendererGenerator = require("./rendererGenerator");
+import BasemapGallery = require("esri/widgets/BasemapGallery");
 import all = require("dojo/promise/all");
 
 let webscene = new WebScene({
@@ -16,6 +17,12 @@ let view = new SceneView({
 });
 
 view.ui.empty("top-left");
+
+let basemapGallery = new BasemapGallery({
+  view: view
+});
+// Add widget to the bottom left corner of the view
+view.ui.add(basemapGallery, { position: "bottom-right" });
 
 interface layerMetadata {
     name: string;
