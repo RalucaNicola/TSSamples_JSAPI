@@ -53,7 +53,7 @@ view.when(() => {
 
     insetView.when(() => {
         updateOverview();
-        view.watch("interacting", updateOverview);
+        view.watch("stationary", updateOverview);
         insetView.on("click", insetMapClicked);
     });
 
