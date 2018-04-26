@@ -34,7 +34,7 @@ view.when(() => {
     const insetView = new MapView({
         map: map,
         center: view.camera.position,
-        scale: view.scale * 2 * Math.max(view.width / 250, view.height / 250),
+        scale: view.scale * 4 * Math.max(view.width / 250, view.height / 250),
         container: insetDiv,
         constraints: {
             rotationEnabled: false
@@ -61,10 +61,15 @@ view.when(() => {
 
         // 2d map clicked - navigate to location on 3d map
         view.map.ground.queryElevation(e.mapPoint).then((result) => {
+
+            // the clicked point is the point from where I look
+            /* result.geometry.z *= 5;
             const camera = view.camera.clone();
             camera.position = result.geometry;
-            view.camera = camera;
-            //view.goTo(result.geometry);
+            view.camera = camera; */
+
+            // the clicked point is the point to look at
+            view.goTo(result.geometry);
             updateGraphic();
         });
     }
@@ -95,7 +100,7 @@ view.when(() => {
         if (view) {
             insetView.goTo({
                 center: view.camera.position,
-                scale: view.scale * 2 * Math.max(view.width / insetView.width, view.height / insetView.height)
+                scale: view.scale * 4 * Math.max(view.width / insetView.width, view.height / insetView.height)
             }).then(() => {
                 updateGraphic();
             });
