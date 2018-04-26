@@ -52,6 +52,7 @@ view.when(() => {
     insetView.ui.add(fullScreen, "bottom-left");
 
     insetView.when(() => {
+        updateOverview();
         view.watch("interacting", updateOverview);
         insetView.on("click", insetMapClicked);
     });

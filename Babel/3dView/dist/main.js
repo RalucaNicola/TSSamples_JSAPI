@@ -64,6 +64,7 @@ define(["esri/Map", "esri/WebScene", "esri/views/MapView", "esri/views/SceneView
         insetView.ui.add(fullScreen, "bottom-left");
 
         insetView.when(function () {
+            updateOverview();
             view.watch("interacting", updateOverview);
             insetView.on("click", insetMapClicked);
         });
