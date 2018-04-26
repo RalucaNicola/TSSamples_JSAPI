@@ -27,13 +27,13 @@ var homeBtn = new Home({
 view.ui.add(homeBtn, "top-left");
 
 view.when(() => {
-    /* Create an overview map and add it to the lower left corner 
+    /* Create an overview map and add it to the lower left corner
     when the scene view is modified udpate overview map */
     const insetDiv = document.createElement("div");
     insetDiv.classList.add("inset-map");
     const insetView = new MapView({
         map: map,
-        center: view.center,
+        center: view.camera.position,
         scale: view.scale * 2 * Math.max(view.width / 250, view.height / 250),
         container: insetDiv,
         constraints: {
@@ -52,26 +52,29 @@ view.when(() => {
     insetView.ui.add(fullScreen, "bottom-left");
 
     insetView.when(() => {
-
-        view.watch("stationary", updateOverview);
+        view.watch("interacting", updateOverview);
         insetView.on("click", insetMapClicked);
     });
 
     function insetMapClicked(e) {
 
-        // 2d map clicked - navigate to location on 3d map 
+        // 2d map clicked - navigate to location on 3d map
         view.map.ground.queryElevation(e.mapPoint).then((result) => {
-            view.goTo(result.geometry);
+            const camera = view.camera.clone();
+            camera.position = result.geometry;
+            view.camera = camera;
+            //view.goTo(result.geometry);
             updateGraphic();
         });
     }
+    window.view = view;
 
     function updateGraphic() {
 
         insetView.graphics.removeAll();
 
         const location = new Graphic({
-            geometry: view.center,
+            geometry: view.camera.position,
             symbol: {
                 type: "text",
                 color: "#FFFF00",
@@ -88,9 +91,9 @@ view.when(() => {
     }
 
     function updateOverview() {
-        if (view && view.center) {
+        if (view) {
             insetView.goTo({
-                center: view.center,
+                center: view.camera.position,
                 scale: view.scale * 2 * Math.max(view.width / insetView.width, view.height / insetView.height)
             }).then(() => {
                 updateGraphic();
